@@ -1,0 +1,79 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+
+void binarynum(int c){
+	for(int i = 6; i>=0;i--){
+		cout<<((c>>i)&1);
+	}
+cout<<endl;
+}
+
+int main()
+{	//trick 1
+	// checking odd or even;
+	// if(56 & 1){
+	// 	cout<<"odd"<<endl;
+	// }
+	// else{
+	// 	cout<<"even"<<endl;
+	// }
+	
+	//trick 2 
+	//multiply and divide by 2 with bits
+	// cout<<(55>>1)<<endl;//divide
+	// cout<<(55<<1)<<endl;//multiply
+
+	//checking if 
+	// for(char c = 'X';c<= 'Z';c++){
+	// 	cout<<c<<endl;
+	// 	binarynum(int(c));
+	// }
+	// for(char c = 'x';c<= 'z';c++){
+	// 	cout<<c<<endl;
+	// 	binarynum(int(c));
+	// }
+
+	//trick 3& 4 upper case to lower case and vice versa
+	// char A= 'A';
+	// char a = A | (1<<5);
+	// cout<<a<<endl;
+	// cout<<char(a& ~(1<<5))<<endl;
+	// cout<<(1<<5)<<endl;
+
+	//clear lsb 
+	int a = 59;
+	binarynum(a);
+	int i = 0;
+	int b = (a & ~((1<<(i+1))-1));
+	binarynum(b);
+	binarynum(~((1<<(i+1))-1));
+	// int sum = 0;
+	// for(int i=0;i<31;i++){
+	// 	sum+= pow(2,i);
+	// }
+	// cout<<sum<<endl;
+
+	// cout<<INT_MAX;
+
+  //clear msb
+	int a = 59;
+	binarynum(a);
+	int i = 3;
+	int b = (a & ((1<<(i+1))-1));
+	binarynum(b);
+
+ //trick 6
+	//check if a num is power of 2 or not
+	//idea = 2 power number has only one 1 in it 000010000 so using and operation with same number -1 =
+	//000100000 & 0000111111 should be zero;
+	int num = 32;
+	if(num & (num -1)){
+		cout<<"not power of 2";
+	}
+	else{
+		cout<<"power of 2";
+	}
+
+
+}
