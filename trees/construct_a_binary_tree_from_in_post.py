@@ -15,13 +15,13 @@ class Solution:
 
     def BuildTree(self, postorder, inorder) -> Node:
 
-        if not inorder or not preorder:
+        if not inorder or not postorder:
             return None
 
-        root = Node(preorder[0])
-        mid = inorder.index(preorder[0])
-        root.left = self.BuildTree(preorder[1: mid+1], inorder[:mid])
-        root.right = self.BuildTree(preorder[mid+1:], inorder[mid+1: ])
+        root = Node(postorder[-1])
+        mid = inorder.index(postorder[-1])
+        root.left = self.BuildTree(postorder[: mid], inorder[:mid])
+        root.right = self.BuildTree(postorder[mid:-1], inorder[mid+1:  ])
 
 
         return root
@@ -39,9 +39,9 @@ class Solution:
 if __name__ == "__main__":
 
     sol = Solution()
-    preorder = [3, 9, 20, 15, 7]
+    postorder = [9,15,7,20,3]
     inorder = [9, 3, 15, 20, 7]
-    tree = sol.BuildTree(preorder, inorder)
+    tree = sol.BuildTree(postorder, inorder)
     sol.printTree(tree)
 
 
