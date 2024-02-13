@@ -21,4 +21,13 @@ class Solution:
                 return s
 
         return ""
+    
+    #optimized 
+        # for s in words:
+
+        #         if  s == s[::-1]:
+        #             return s
+    
+
+
             
