@@ -26,3 +26,30 @@ class Solution:
                 
                 
         
+class Solution:
+    def countSubstrings(self, s: str) -> int:
+        res = []
+
+        def count_palindrome(s,i,j):
+            nonlocal res
+            temp_s = ''
+            while i >= 0 and j < len(s):
+
+                if s[i] == s[j]:
+                    temp_s = s[i:j+1]
+                    res.append(temp_s)
+                    i -= 1
+                    j += 1
+                
+                else:
+                    return
+        
+        for i in range(len(s)):
+
+            count_palindrome(s,i,i)
+            count_palindrome(s,i,i+1)
+        
+        return len(res)
+
+
+                
